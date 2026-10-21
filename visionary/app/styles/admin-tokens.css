@@ -1,0 +1,116 @@
+/* Admin design system tokens — "Midnight Atelier".
+   Blue carries the luxury; crimson is reserved for primary actions, unread and urgent signals.
+   Components in admin.css must use these variables, not raw hex values. */
+
+body.admin-body {
+  /* Surfaces: solid deep navy, warm ivory-tinted glass, raised */
+  --ad-canvas: var(--midnight);
+  --ad-s1: #0b1632;
+  --ad-glass: linear-gradient(165deg, rgba(246, 243, 236, .08), rgba(246, 243, 236, .025) 60%);
+  --ad-raised: linear-gradient(165deg, rgba(246, 243, 236, .14), rgba(246, 243, 236, .045) 60%);
+  --ad-input: rgba(4, 10, 28, .55);
+
+  /* Text */
+  --ad-text: #f4efe6;
+  --ad-text-2: #cfc7b8;
+  --ad-text-3: #a09a8b;
+  --ad-beige: #e4cfa6;
+  --ad-ivory: var(--ivory);
+
+  /* Lines */
+  --ad-line: rgba(246, 243, 236, .11);
+  --ad-line-2: rgba(246, 243, 236, .2);
+
+  /* Light: warm beige (active/selected), crimson for emphasis, navy only as the foundation */
+  --ad-glow: #e4cfa6;
+  --ad-glow-soft: rgba(228, 207, 166, .16);
+  --ad-violet: rgba(228, 207, 166, .14);
+  --ad-crimson: var(--crimson);
+  --ad-crimson-text: var(--crimson-soft);
+
+  /* Meaningful states only */
+  --ad-warn: #e8b45a;
+  --ad-ok: #3ecf8e;
+
+  /* Radii */
+  --ad-r1: 8px;
+  --ad-r2: 14px;
+  --ad-r3: 20px;
+
+  /* Elevation */
+  --ad-sh1: inset 0 1px 0 rgba(255, 255, 255, .05), 0 12px 28px -16px rgba(0, 0, 0, .65);
+  --ad-sh2: inset 0 1px 0 rgba(255, 255, 255, .07), 0 28px 56px -28px rgba(0, 0, 0, .75);
+
+  /* Type scale (Manrope for UI, Cormorant only for page titles + hero figures) */
+  --ad-fs-xs: 11px;
+  --ad-fs-sm: 12px;
+  --ad-fs-base: 13px;
+  --ad-fs-md: 14px;
+  --ad-fs-lg: 16px;
+
+  /* Spacing */
+  --ad-sp-1: 4px;
+  --ad-sp-2: 8px;
+  --ad-sp-3: 12px;
+  --ad-sp-4: 16px;
+  --ad-sp-5: 24px;
+  --ad-sp-6: 32px;
+
+  /* Atmosphere: crimson ember top-right, warm beige glow bottom-left, a faint navy pool for depth */
+  background:
+    radial-gradient(900px 520px at 88% -12%, rgba(200, 16, 46, .2), transparent 60%),
+    radial-gradient(760px 520px at -6% 108%, rgba(228, 207, 166, .1), transparent 60%),
+    radial-gradient(900px 500px at 35% -20%, rgba(37, 68, 170, .2), transparent 60%),
+    var(--ad-canvas);
+  background-attachment: fixed;
+  color: var(--ad-text);
+  color-scheme: dark;
+  font-size: var(--ad-fs-md);
+  line-height: 1.5;
+}
+
+/* Light theme — inverted palette: ivory is the foundation, navy and crimson are accents.
+   The sidebar deliberately keeps the dark treatment (re-scoped below). */
+body.admin-body[data-theme='light'] {
+  --ad-canvas: var(--ivory);
+  --ad-s1: var(--paper);
+  --ad-glass: linear-gradient(165deg, rgba(255, 255, 255, .88), rgba(252, 250, 244, .7) 60%);
+  --ad-raised: linear-gradient(165deg, #fff, #f6f0e2 60%);
+  --ad-input: rgba(255, 255, 255, .8);
+
+  --ad-text: var(--ink);
+  --ad-text-2: #3d4a66;
+  --ad-text-3: #6d7890;
+  --ad-beige: #8c6f3e;
+
+  --ad-line: rgba(11, 26, 56, .1);
+  --ad-line-2: rgba(11, 26, 56, .18);
+
+  --ad-glow: #b08d4f;
+  --ad-glow-soft: rgba(176, 141, 79, .16);
+  --ad-violet: rgba(176, 141, 79, .12);
+  --ad-crimson-text: var(--crimson-dark);
+
+  --ad-warn: #96700f;
+  --ad-ok: #178556;
+
+  --ad-sh1: inset 0 1px 0 rgba(255, 255, 255, .7), 0 12px 28px -18px rgba(11, 26, 56, .22);
+  --ad-sh2: inset 0 1px 0 rgba(255, 255, 255, .8), 0 28px 56px -30px rgba(11, 26, 56, .28);
+
+  background:
+    radial-gradient(900px 520px at 88% -12%, rgba(200, 16, 46, .07), transparent 60%),
+    radial-gradient(760px 520px at -6% 108%, rgba(228, 207, 166, .4), transparent 60%),
+    radial-gradient(900px 500px at 35% -20%, rgba(18, 48, 107, .07), transparent 60%),
+    var(--ad-canvas);
+  color-scheme: light;
+}
+
+/* Sidebar stays Midnight in both themes — re-scope the dark tokens on it. */
+body.admin-body[data-theme='light'] .sidebar {
+  --ad-text: #f4efe6;
+  --ad-text-2: #cfc7b8;
+  --ad-text-3: #a09a8b;
+  --ad-line: rgba(246, 243, 236, .11);
+  --ad-line-2: rgba(246, 243, 236, .2);
+  --ad-glow: #e4cfa6;
+}

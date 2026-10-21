@@ -1,0 +1,23 @@
+# Secrets & local env
+.env*
+!.env.example
+
+# Build output & dependencies
+node_modules/
+.next/
+out/
+
+# Internal proposal document — kept local only
+*AUR-PRES-VE-2026*.pdf
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Google Takeout exports (customer names/reviews, admin emails): never commit
+reviews-import/
+archive-unused/
+
+# Client originals (large; web-ready copies live in visionary/public/media). Kept local, not needed to build.
+raw-assests/
+collection-assests/

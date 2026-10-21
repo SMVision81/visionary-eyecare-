@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.env*
+!.env.example
+.DS_Store
+
+# Google Takeout exports must never live in the app or be committed
+location-*/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
