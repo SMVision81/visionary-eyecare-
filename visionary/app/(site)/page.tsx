@@ -4,7 +4,7 @@ import { address, brands, faqs, mapsLink, openingHours, phone, reviewsLink, site
 
 export const metadata: Metadata = {
   title: { absolute: 'Eye Test & Optical Shop, OUG Parklane KL | Visionary Eyecare' },
-  description: 'Eye tests by our in-house optometrist, 15 frame and sunglass labels and contact lenses at OUG Parklane, near Old Klang Road. WhatsApp us in one tap.',
+  description: `Eye tests by our in-house optometrist, ${brands.length} frame and sunglass labels and contact lenses at OUG Parklane, near Old Klang Road. WhatsApp us in one tap.`,
   alternates: { canonical: '/' },
 };
 
@@ -16,7 +16,7 @@ const businessLd = {
   '@id': `${siteUrl}/#business`,
   name: 'Visionary Eyecare',
   url: siteUrl,
-  description: 'Independent optical shop at OUG Parklane, Kuala Lumpur, with an in-house optometrist and optician and 20 years of optical experience: eye examinations, prescription spectacles, frames and sunglasses, contact lenses, fittings and kids’ eyecare.',
+  description: 'Independent optical shop at OUG Parklane, Kuala Lumpur, with an in-house optometrist and optician and 20 years of optical experience: eye examinations, prescription spectacles with Tokai lenses imported from Japan, lens edging, frames and sunglasses, contact lenses, fittings and kids’ eyecare.',
   image: `${siteUrl}/media/images/store-interior.jpg`,
   logo: `${siteUrl}/images/logo.png`,
   brand: brands.map((name) => ({ '@type': 'Brand', name })),

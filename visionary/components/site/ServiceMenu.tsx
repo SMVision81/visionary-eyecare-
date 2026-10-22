@@ -10,7 +10,7 @@ const arrow = (
 );
 
 /**
- * Services page: the six services as a menu. Desktop: hovering or focusing a row swaps the large photo beside the list.
+ * Services page: the services as a menu. Desktop: hovering or focusing a row swaps the large photo beside the list.
  * Phones: each service is a photo card in a swipeable row. Each row is an anchor (/services#contact-lenses).
  * `images` are server-rendered <Media> elements, one per item, in the same order.
  */

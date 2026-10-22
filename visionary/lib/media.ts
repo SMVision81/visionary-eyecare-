@@ -62,6 +62,7 @@ export const media = {
   brandProjektProdukt: brand('projekt-produkt'),
   brandMovitra: brand('movitra'),
   brandRayBan: brand('ray-ban', 'RAY-BAN eyewear campaign'),
+  brandArmaniExchange: brand('armani-exchange'), // PLACEHOLDER (drawn frame outline) until a real ARMANI EXCHANGE photo is supplied
   brandTommyHilfiger: brand('tommy-hilfiger', 'TOMMY HILFIGER eyewear campaign'),
   brandOakley: brand('oakley', 'OAKLEY eyewear campaign'),
   brandFila: brand('fila', 'FILA eyewear campaign'),
@@ -94,6 +95,7 @@ export const media = {
   svcSpectacles: photo('frame-classic.jpg', ''),
   svcFrames: photo('frames-rack.jpg', ''),
   svcContacts: photo('frames-collection.jpg', ''),
+  svcEdging: img('/media/images/svc-lens-edging.jpg'), // PLACEHOLDER (drawn lens outline) until a photo of the lens edger arrives
   svcFittings: photo('hero-boutique.jpg', ''),
   svcKids: photo('frames-wall.jpg', ''),
   // Services hero moodboard: the brand folders' SECOND campaign shots (collection-assests/<brand>/*_02 etc.), so none

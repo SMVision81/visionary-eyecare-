@@ -3,11 +3,11 @@ import Media from '@/components/media/Media';
 import { CollectionBrands, CollectionBudget, CollectionExclusive, FAQ, Label, Promotions, ServicesHero, ServicesReviews } from '@/components/site/Blocks';
 import ServiceMenu, { type ServiceMenuItem } from '@/components/site/ServiceMenu';
 import type { MediaKey } from '@/lib/media';
-import { faqs, services, whatsappLink } from '@/lib/site';
+import { brands, faqs, services, whatsappLink } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Eye Tests, Spectacles & Lenses in OUG',
-  description: 'Eye examinations, prescription spectacles, contact lenses and kids’ eyecare, plus 15 frame and sunglass labels, three exclusive in the area.',
+  description: `Eye tests, Tokai prescription lenses from Japan, lens edging in 30 minutes, contact lenses and ${brands.length} frame and sunglass labels at OUG Parklane.`,
   alternates: { canonical: '/services' },
 };
 
@@ -29,8 +29,9 @@ const serviceMedia: Record<string, MediaKey> = {
   '02': 'svcSpectacles',
   '03': 'svcFrames',
   '04': 'svcContacts',
-  '05': 'svcFittings',
-  '06': 'svcKids',
+  '05': 'svcEdging',
+  '06': 'svcFittings',
+  '07': 'svcKids',
 };
 
 export default function Services() {

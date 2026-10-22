@@ -11,14 +11,14 @@ const arrow = (d: string) => (
 );
 
 /**
- * Services: the twelve non-exclusive labels as a lookbook. One label fills the stage (its photo sharp in the panel and
+ * Services: the non-exclusive labels as a lookbook. One label fills the stage (its photo sharp in the panel and
  * blurred across the whole section); a filmstrip of thumbnails, the arrows, arrow keys or a swipe change it, and the
  * new photo comes into focus. Never advances on its own. `photos`/`thumbs` are server-rendered <Media> per item.
  */
 export default function BrandLookbook({ items, photos, thumbs }: { items: LookbookItem[]; photos: React.ReactNode[]; thumbs: React.ReactNode[] }) {
   const [cur, setCur] = useState(0);
   const [moved, setMoved] = useState(false);
-  // Only the current label and its neighbours are mounted (plus any already seen), so the page loads 3 photos, not 12.
+  // Only the current label and its neighbours are mounted (plus any already seen), so the page loads 3 photos, not all of them.
   const [seen, setSeen] = useState<Set<number>>(() => new Set([0]));
   const startX = useRef<number | null>(null);
   const n = items.length;

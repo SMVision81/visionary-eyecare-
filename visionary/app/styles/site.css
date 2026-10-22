@@ -301,24 +301,38 @@ html.menu-open { overflow: hidden; }
 .collection :focus-visible { outline-color: var(--crimson-dark); }
 .exclusive-grid { position: relative; list-style: none; margin: 0 auto; padding: 0; max-width: 1200px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .exclusive-grid > li { display: block; }
-.exclusive-card { position: relative; display: block; height: clamp(300px, 56svh, 500px); overflow: hidden; border: 1px solid var(--hair); border-radius: 4px; background: var(--navy); color: #fff; transition: transform .5s var(--ease), border-color .5s var(--ease), box-shadow .5s var(--ease); }
-.exclusive-card img { object-fit: cover; transition: transform 1.1s var(--ease); }
-.exclusive-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6, 18, 48, .1) 35%, rgba(6, 18, 48, .92) 100%); pointer-events: none; }
+.exclusive-card { position: relative; display: flex; flex-direction: column; height: clamp(420px, 58svh, 540px); overflow: hidden; border: 1px solid var(--hair); border-radius: 4px; background: var(--paper); color: var(--ink); transition: transform .5s var(--ease), border-color .5s var(--ease), box-shadow .5s var(--ease); }
 .exclusive-card:hover { border-color: rgba(200, 16, 46, .5); transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(6, 18, 48, .6); }
-.exclusive-card:hover img { transform: scale(1.06); }
-.exclusive-card .badge { position: absolute; top: 20px; left: 20px; z-index: 2; }
-.exclusive-body { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 32px 30px; display: flex; flex-direction: column; gap: 10px; }
-.exclusive-card strong { font: 500 clamp(28px, 2.6vw, 38px)/1 var(--display); letter-spacing: .14em; }
-.exclusive-card small { font: 600 11px/1.4 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: rgba(255, 255, 255, .7); }
-.exclusive-cta { margin-top: 8px; font: 700 11px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--crimson-soft); transition: transform .4s var(--ease); }
-.exclusive-card:hover .exclusive-cta { transform: translateX(6px); }
+.exclusive-photo { position: relative; flex: 1 1 auto; min-height: 150px; overflow: hidden; background: var(--navy); color: #fff; }
+.exclusive-photo img { object-fit: cover; transition: transform 1.1s var(--ease); }
+.exclusive-card:hover .exclusive-photo img { transform: scale(1.06); }
+.exclusive-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6, 18, 48, .05) 40%, rgba(6, 18, 48, .88) 100%); pointer-events: none; }
+.exclusive-photo .badge { position: absolute; top: 18px; left: 18px; z-index: 2; }
+.exclusive-photo h3 { position: absolute; z-index: 2; left: 20px; right: 20px; bottom: 16px; margin: 0; font: 500 clamp(24px, 2.2vw, 32px)/1 var(--display); letter-spacing: .14em; color: #fff; }
+/* Three frames per brand: product photos when supplied, drawn outlines until then (FrameSketch in Blocks.tsx). */
+.exclusive-frames { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 14px 16px 0; list-style: none; }
+.frame-tile { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.frame-pic { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 3px; background: var(--ivory); }
+.frame-pic img { object-fit: contain; padding: 6%; }
+.frame-sketch { width: 80%; height: auto; fill: var(--paper); stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.frame-sketch .fs-line { fill: none; }
+.frame-sketch.is-sun :not(.fs-line) { fill: var(--navy-2); }
+.frame-kind { font: 700 11px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+.exclusive-body { display: flex; flex-direction: column; gap: 4px; padding: 12px 16px 16px; }
+.exclusive-card small { font: 600 11px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--stone); }
+.exclusive-cta { display: inline-flex; align-items: center; gap: .5em; min-height: 44px; font: 700 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--crimson); }
+.exclusive-cta > span[aria-hidden] { display: inline-block; transition: transform .4s var(--ease); }
+/* The whole card is the link's tap area (the link itself must stay untransformed so ::after anchors to the card). */
+.exclusive-cta::after { content: ''; position: absolute; inset: 0; z-index: 3; }
+.exclusive-card:hover .exclusive-cta > span[aria-hidden] { transform: translateX(6px); }
+.exclusive-card:has(.exclusive-cta:focus-visible) { outline: 2px solid var(--crimson-dark); outline-offset: 3px; }
 /* Touch phones: the three exclusives become a swipeable row instead of a tall stack. */
 @media (max-width: 760px) and (pointer: coarse) {
   .exclusive-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; margin: -8px calc(-1 * var(--pad)); padding: 8px var(--pad); scroll-padding-inline: var(--pad); scrollbar-width: none; }
   .exclusive-grid::-webkit-scrollbar { display: none; }
-  .exclusive-grid > li { flex: 0 0 80%; scroll-snap-align: start; }
+  .exclusive-grid > li { flex: 0 0 82%; scroll-snap-align: start; }
   .exclusive-grid > li:last-child { margin-right: var(--pad); }
-  .exclusive-card { height: clamp(340px, 58svh, 460px); }
+  .exclusive-card { height: clamp(420px, 66svh, 520px); }
 }
 @keyframes cf-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
@@ -576,7 +590,7 @@ html.menu-open { overflow: hidden; }
   .rf-mark { margin-left: 0; margin-right: .1em; width: auto; }
 }
 
-/* Services: lookbook of the twelve other labels (BrandLookbook.tsx). Fills one screen below the navbar. */
+/* Services: lookbook of the other (non-exclusive) labels (BrandLookbook.tsx). Fills one screen below the navbar. */
 .labels { position: relative; isolation: isolate; overflow: hidden; min-height: max(calc(100svh - var(--nav-h)), 520px); display: flex; flex-direction: column; background: var(--navy); color: #fff; padding: clamp(28px, 5vh, 56px) var(--pad) clamp(20px, 3.4vh, 36px); }
 .labels-head { position: relative; z-index: 2; max-width: 1180px; width: 100%; margin: 0 auto; }
 .labels-head h2 { margin: 12px 0 0; font-size: clamp(30px, min(3.2vw, 5.4vh), 48px); color: #fff; }
@@ -900,7 +914,7 @@ html.menu-open { overflow: hidden; }
   .rvw-card { padding: 32px var(--pad) 40px; }
 }
 
-/* Services: the six services as a menu beside a full-height photo; the photo shows the active service's details
+/* Services: the services as a menu beside a full-height photo; the photo shows the active service's details
    (ServiceMenu.tsx). Fills one screen below the sticky navbar on desktop. */
 .svc { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); grid-template-rows: auto 1fr; grid-template-areas: 'head fig' 'list fig'; column-gap: clamp(32px, 5vw, 72px); min-height: max(calc(100svh - var(--nav-h)), 560px); padding-block: clamp(28px, 5vh, 56px); padding-inline: max(var(--pad), calc((100% - 1180px) / 2)); background: var(--paper); }
 .svc-head { grid-area: head; margin-bottom: clamp(16px, 2.6vh, 28px); }

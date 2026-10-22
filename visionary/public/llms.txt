@@ -3,8 +3,8 @@
 > Independent optical shop at OUG Parklane, Kuala Lumpur, Malaysia (near Old Klang Road), with an in-house optometrist and optician and 20 years of optical experience.
 
 ## Key facts
-- Services: eye examinations by an in-house optometrist (done on-site), prescription spectacles fitted by an optician, frames and sunglasses, contact lenses, fittings and adjustments, kids' eyecare.
-- 15 frame and sunglass brands: AKONI, PROJEKT PRODUKT, MOVITRA, RAY-BAN, TOMMY HILFIGER, OAKLEY, FILA, AGNÈS B., NEW BALANCE, P+US, GUY LAROCHE, CARPE DIEM, HUMARS, MASARATA, MASUNAGA.
+- Services: eye examinations by an in-house optometrist (done on-site), prescription spectacles fitted by an optician (specialising in Tokai prescription lenses, made to order and imported directly from Japan), lens edging (done in 30 minutes), frames and sunglasses, contact lenses, fittings and adjustments, kids' eyecare.
+- 16 frame and sunglass brands: AKONI, PROJEKT PRODUKT, MOVITRA, RAY-BAN, ARMANI EXCHANGE, TOMMY HILFIGER, OAKLEY, FILA, AGNÈS B., NEW BALANCE, P+US, GUY LAROCHE, CARPE DIEM, HUMARS, MASARATA, MASUNAGA.
 - Exclusive in the area: AKONI, PROJEKT PRODUKT and MOVITRA.
 - Premium and affordable: alongside the premium labels, a wide range of affordable frames, some under RM100.
 - Contact lenses: Bionics Color Touch, Manxion and FreshLady.
@@ -19,5 +19,5 @@
 ## Pages
 - [Home](/): overview, services, brands, Google reviews and FAQs.
 - [About](/about): who we are, the in-house optometrist and optician, what a visit looks like.
-- [Services & Collections](/services): every service, the 15 labels, affordable frames and the current contact lens offer.
+- [Services & Collections](/services): every service, the 16 labels, affordable frames and the current contact lens offer.
 - [Contact](/contact): map, opening hours, WhatsApp, phone and the enquiry form.

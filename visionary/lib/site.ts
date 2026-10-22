@@ -60,25 +60,26 @@ export const openingHours = [
   { days: ['Sunday'], opens: '10:30', closes: '18:00' },
 ];
 
-// `short` (optional) replaces the label on phones, where the hero proof row is narrow.
-export const stats: { value: string; label: string; short?: string }[] = [
-  { value: '20+', label: 'Years of experience' },
-  { value: '15', label: 'Frame & sunglass brands', short: 'Eyewear brands' },
-  { value: '3', label: 'Exclusive labels' },
-];
-
 export const brands = [
-  'AKONI', 'PROJEKT PRODUKT', 'MOVITRA', 'RAY-BAN', 'TOMMY HILFIGER', 'OAKLEY', 'FILA', 'AGNÈS B.',
+  'AKONI', 'PROJEKT PRODUKT', 'MOVITRA', 'RAY-BAN', 'ARMANI EXCHANGE', 'TOMMY HILFIGER', 'OAKLEY', 'FILA', 'AGNÈS B.',
   'NEW BALANCE', 'P+US', 'GUY LAROCHE', 'CARPE DIEM', 'HUMARS', 'MASARATA', 'MASUNAGA',
 ];
 
 export const exclusiveBrands = ['AKONI', 'PROJEKT PRODUKT', 'MOVITRA'];
+
+// `short` (optional) replaces the label on phones, where the hero proof row is narrow.
+export const stats: { value: string; label: string; short?: string }[] = [
+  { value: '20+', label: 'Years of experience' },
+  { value: String(brands.length), label: 'Frame & sunglass brands', short: 'Eyewear brands' },
+  { value: '3', label: 'Exclusive labels' },
+];
 
 export const brandMedia: Record<string, MediaKey> = {
   'AKONI': 'brandAkoni',
   'PROJEKT PRODUKT': 'brandProjektProdukt',
   'MOVITRA': 'brandMovitra',
   'RAY-BAN': 'brandRayBan',
+  'ARMANI EXCHANGE': 'brandArmaniExchange',
   'TOMMY HILFIGER': 'brandTommyHilfiger',
   'OAKLEY': 'brandOakley',
   'FILA': 'brandFila',
@@ -95,6 +96,16 @@ export const brandMedia: Record<string, MediaKey> = {
 // Landscape campaign photos: crop focus (or 'contain') so the frames are never cut off in the portrait cards.
 export const brandFit: Record<string, { position?: string }> = {
   'AGNÈS B.': { position: '72% 50%' },
+};
+
+// The three exclusives show three frames each: optical frames and sunglasses (client request, 22 Oct 2026).
+// PLACEHOLDER: no product photos yet, so each tile draws a frame outline. When the shop's photos arrive, add them to
+// lib/media.ts and set `media` here; the optical/sunglasses mix below is ours until the real frames are known.
+export type FrameKind = 'optical' | 'sun';
+export const exclusiveFrames: Record<string, { kind: FrameKind; media?: MediaKey }[]> = {
+  'AKONI': [{ kind: 'optical' }, { kind: 'optical' }, { kind: 'sun' }],
+  'PROJEKT PRODUKT': [{ kind: 'optical' }, { kind: 'optical' }, { kind: 'sun' }],
+  'MOVITRA': [{ kind: 'optical' }, { kind: 'optical' }, { kind: 'sun' }],
 };
 
 export const brandLink = (name: string) => whatsappLink(`Hi Visionary Eyecare, I'd like to see ${name} frames.`);
@@ -115,13 +126,13 @@ export const services: Service[] = [
   {
     no: '02',
     title: 'Prescription Spectacles',
-    tag: 'Fitted by our optician',
-    desc: 'Lenses tailored to your prescription, routine and style — adjusted until they feel right.',
+    tag: 'Tokai lenses from Japan',
+    desc: 'We specialise in Tokai prescription lenses, made to order and imported directly from Japan, then fitted by our optician.',
   },
   {
     no: '03',
     title: 'Frames & Sunglasses',
-    tag: '15 brands · 3 exclusive',
+    tag: `${brands.length} brands · ${exclusiveBrands.length} exclusive`,
     desc: 'Premium labels and affordable everyday frames, including names you won’t find elsewhere nearby.',
   },
   {
@@ -133,12 +144,18 @@ export const services: Service[] = [
   },
   {
     no: '05',
+    title: 'Lens Edging',
+    tag: 'Done in 30 minutes',
+    desc: 'We cut, shape and finish your lenses so they fit your chosen frame precisely. Done in 30 minutes.',
+  },
+  {
+    no: '06',
     title: 'Fittings & Adjustments',
     tag: 'Comfort & fit',
     desc: 'Small changes make a big difference. Come in for a fit check, clean or adjustment.',
   },
   {
-    no: '06',
+    no: '07',
     title: 'Kids’ Eyecare',
     tag: 'Patient & friendly',
     desc: 'Gentle, unhurried support to help younger eyes grow with good vision habits.',
@@ -218,7 +235,11 @@ export const faqs: Record<'home' | 'about' | 'services' | 'contact', Faq[]> = {
   services: [
     {
       q: 'Which frame brands do you carry?',
-      a: `We carry 15 frame and sunglass brands: ${brands.join(', ')}. ${exclusiveBrands.join(', ')} are available exclusively with us in the area.`,
+      a: `We carry ${brands.length} frame and sunglass brands: ${brands.join(', ')}. ${exclusiveBrands.join(', ')} are available exclusively with us in the area.`,
+    },
+    {
+      q: 'Which prescription lenses do you use?',
+      a: 'We specialise in Tokai prescription lenses. Each pair is made to order for your prescription and imported directly from Japan.',
     },
     {
       q: 'Do you have affordable frames?',

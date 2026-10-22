@@ -1,4 +1,4 @@
-import { hours, phone } from './site';
+import { brands, hours, phone } from './site';
 
 // Quick WhatsApp reply templates for the admin enquiry composer.
 // Add or edit templates here; `{name}` is replaced with the customer's first name.
@@ -25,7 +25,7 @@ export const replyTemplates: ReplyTemplate[] = [
   {
     id: 'frames',
     label: 'Frames & spectacles',
-    body: 'Hi {name}, thanks for asking about frames. We carry 15 brands, including AKONI, PROJEKT PRODUKT and MOVITRA, which are exclusive to us in the area. Drop by and our optician will help you find the right fit.',
+    body: `Hi {name}, thanks for asking about frames. We carry ${brands.length} brands, including AKONI, PROJEKT PRODUKT and MOVITRA, which are exclusive to us in the area. Drop by and our optician will help you find the right fit.`,
   },
   {
     id: 'call-back',

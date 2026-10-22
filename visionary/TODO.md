@@ -22,6 +22,9 @@ Open work against proposal `AUR-PRES-VE-2026-003` plus the admin panel. Details 
 - [ ] Team names for About: confirm whether the owner wants names shown at all
 - [ ] Real outlet photography/video to replace stock photos in `public/images/photos/`
 - [ ] Real HUMARS image (`brandHumars` in `lib/media.ts` is a placeholder stock photo)
+- [ ] 9 product photos for the exclusives: 3 frames each for AKONI, PROJEKT PRODUKT, MOVITRA (optical + sunglasses). Tiles show drawn outlines until then: add the photos to `lib/media.ts` and set `media` (and the real optical/sunglasses mix) in `exclusiveFrames` in `lib/site.ts`
+- [ ] ARMANI EXCHANGE photo (`brandArmaniExchange` is a drawn placeholder, `public/media/images/brands/armani-exchange.jpg`)
+- [ ] Lens edging photo (`svcEdging` is a drawn placeholder, `public/media/images/svc-lens-edging.jpg`)
 - [ ] Better CARPE DIEM image (current source is only 685px wide)
 - [ ] Promotion end date, if any. When it ends, set `promo.active = false` in `lib/site.ts`
 

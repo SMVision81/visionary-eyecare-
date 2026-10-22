@@ -9,6 +9,7 @@ import FaqChat from '@/components/site/FaqAccordion';
 import ReviewDeck from '@/components/site/ReviewDeck';
 import { OpenStatus } from '@/components/site/OpenBadge';
 import ReviewFocus from '@/components/site/ReviewFocus';
+import SwipeList from '@/components/site/SwipeList';
 import ExplorePanels, { type ExploreRow } from '@/components/site/ExplorePanels';
 import {
   address,
@@ -19,7 +20,9 @@ import {
   brands,
   enquiryLink,
   exclusiveBrands,
+  exclusiveFrames,
   type Faq,
+  type FrameKind,
   hours,
   mapsEmbed,
   mapsLink,
@@ -491,7 +494,42 @@ export function Contrast() {
 const numberWords = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'];
 const inWords = (n: number) => numberWords[n] ?? String(n);
 
-// Services: the three area exclusives (AKONI, PROJEKT PRODUKT, MOVITRA). Section 1 of the collection.
+// Placeholder for a frame photo that hasn't arrived yet: a drawn outline (three shapes, so a brand's tiles differ).
+// Sunglasses get filled navy lenses. Decorative only; the tile's label says what it is.
+const frameShapes = [
+  // round
+  <>
+    <circle cx="33" cy="26" r="17" />
+    <circle cx="87" cy="26" r="17" />
+    <path className="fs-line" d="M50 24q10-7 20 0M16 22 6 18m98 4 10-4" />
+  </>,
+  // square
+  <>
+    <rect x="12" y="11" width="40" height="30" rx="6" />
+    <rect x="68" y="11" width="40" height="30" rx="6" />
+    <path className="fs-line" d="M52 20q8-5 16 0M12 18 4 15m104 3 8-3" />
+  </>,
+  // aviator
+  <>
+    <path d="M13 13h40c2 0 3 1 3 3 0 15-8 26-21 26-12 0-23-9-23-23 0-4 0-6 1-6z" />
+    <path d="M107 13H67c-2 0-3 1-3 3 0 15 8 26 21 26 12 0 23-9 23-23 0-4 0-6-1-6z" />
+    <path className="fs-line" d="M56 17q4-4 8 0M53 12h14M13 15 5 13m102 2 8-2" />
+  </>,
+];
+
+const frameLabel: Record<FrameKind, string> = { optical: 'Optical', sun: 'Sunglasses' };
+
+function FrameSketch({ kind, shape }: { kind: FrameKind; shape: number }) {
+  return (
+    <svg className={`frame-sketch is-${kind}`} viewBox="0 0 120 52" aria-hidden="true">
+      {frameShapes[shape % frameShapes.length]}
+    </svg>
+  );
+}
+
+// Services: the three area exclusives (AKONI, PROJEKT PRODUKT, MOVITRA), each with its campaign photo and three
+// frames (optical and sunglasses). The whole card is one WhatsApp link (stretched from the "Ask about" text).
+// Section 1 of the collection.
 export function CollectionExclusive({ id }: { id?: string }) {
   return (
     <section className="collection" id={id}>
@@ -502,20 +540,32 @@ export function CollectionExclusive({ id }: { id?: string }) {
         </h2>
       </div>
       <Stagger as="ul" className="exclusive-grid">
-        {exclusiveBrands.map((b) => (
+        {exclusiveBrands.map((b, bi) => (
           <StaggerItem as="li" key={b}>
-            <a className="exclusive-card" href={brandLink(b)} target="_blank" rel="noreferrer">
-              <Media id={brandMedia[b]} sizes="(max-width: 980px) 100vw, 33vw" />
-              <span className="badge">Exclusive</span>
-              <span className="exclusive-body">
-                <strong>{b}</strong>
+            <article className="exclusive-card" aria-labelledby={`ex-${bi}`}>
+              <div className="exclusive-photo">
+                <Media id={brandMedia[b]} sizes="(max-width: 980px) 80vw, 33vw" />
+                <span className="badge">Exclusive</span>
+                <h3 id={`ex-${bi}`}>{b}</h3>
+              </div>
+              <ul className="exclusive-frames" aria-label={`${b} frames`}>
+                {(exclusiveFrames[b] ?? []).map((f, i) => (
+                  <li key={i} className="frame-tile">
+                    <span className="frame-pic">
+                      {f.media ? <Media id={f.media} sizes="(max-width: 980px) 26vw, 120px" /> : <FrameSketch kind={f.kind} shape={i + bi} />}
+                    </span>
+                    <span className="frame-kind">{frameLabel[f.kind]}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="exclusive-body">
                 <small>Only at Visionary Eyecare in the area</small>
-                <span className="exclusive-cta">
+                <a className="exclusive-cta" href={brandLink(b)} target="_blank" rel="noreferrer">
                   Ask about {b} <span aria-hidden="true">→</span>
                   <span className="sr-only"> (opens WhatsApp)</span>
-                </span>
-              </span>
-            </a>
+                </a>
+              </div>
+            </article>
           </StaggerItem>
         ))}
       </Stagger>
@@ -523,7 +573,7 @@ export function CollectionExclusive({ id }: { id?: string }) {
   );
 }
 
-// Services: the other twelve labels as a lookbook (BrandLookbook). Section 2 of the collection.
+// Services: the other labels as a lookbook (BrandLookbook). Section 2 of the collection.
 export function CollectionBrands() {
   const others = brands.filter((b) => !exclusiveBrands.includes(b));
   return (
@@ -764,7 +814,8 @@ export async function ServicesReviews() {
         </div>
       </div>
       {picks.length > 0 ? (
-        <ul className="sv-quotes" role="list">
+        // A swipe row on touch phones: focusable there so keyboard users can scroll it.
+        <SwipeList className="sv-quotes" label="Customer reviews">
           {picks.map((r) => (
             <li key={r.id}>
               <figure className="sv-quote">
@@ -780,7 +831,7 @@ export async function ServicesReviews() {
               </figure>
             </li>
           ))}
-        </ul>
+        </SwipeList>
       ) : (
         <p className="reviews-empty">Read what our customers say on Google.</p>
       )}
