@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Media from '@/components/media/Media';
-import { CollectionBrands, CollectionBudget, CollectionExclusive, FAQ, Label, Promotions, ServicesHero, ServicesReviews } from '@/components/site/Blocks';
+import { CollectionBrands, CollectionBudget, CollectionExclusive, FAQ, Label, LensStrip, Promotions, ServicesHero, ServicesReviews } from '@/components/site/Blocks';
 import ServiceMenu, { type ServiceMenuItem } from '@/components/site/ServiceMenu';
 import type { MediaKey } from '@/lib/media';
 import { brands, faqs, services, whatsappLink } from '@/lib/site';
@@ -67,6 +67,7 @@ export default function Services() {
         intro="Brands, budgets, contact lenses and the current offer, answered."
         link={{ href: '/contact', label: 'Or send an enquiry →' }}
       />
+      <LensStrip />
       <Promotions id="promotions" />
     </main>
   );

@@ -67,6 +67,10 @@ export const brands = [
 
 export const exclusiveBrands = ['AKONI', 'PROJEKT PRODUKT', 'MOVITRA'];
 
+// Contact lens brands we carry (client list, 22 Oct 2026); the promotion brands (Buy 3 Free 1) come last.
+export const promoLensBrands = ['BIONICS', 'MANXION', 'FRESHLADY'];
+export const contactLensBrands = ['ALCON', 'COOPERVISION', 'JOHNSON & JOHNSON', 'BAUSCH + LOMB', ...promoLensBrands];
+
 // `short` (optional) replaces the label on phones, where the hero proof row is narrow.
 export const stats: { value: string; label: string; short?: string }[] = [
   { value: '20+', label: 'Years of experience' },
@@ -139,7 +143,7 @@ export const services: Service[] = [
     no: '04',
     title: 'Contact Lenses',
     tag: 'Clear, daily & colour',
-    desc: 'Bionics, Manxion and FreshLady lenses, with guidance for first-time and experienced wearers.',
+    desc: 'Alcon, CooperVision, Johnson & Johnson and Bausch + Lomb, plus Bionics, Manxion and FreshLady, with guidance for first-time and experienced wearers.',
     badge: promo.active ? 'Buy 3 Free 1' : undefined,
   },
   {
@@ -207,7 +211,7 @@ export const faqs: Record<'home' | 'about' | 'services' | 'contact', Faq[]> = {
     },
     {
       q: 'Do you sell contact lenses?',
-      a: 'Yes. We carry clear, daily and colour contact lenses, including Bionics, Manxion and FreshLady, and we guide you through choosing and wearing them.',
+      a: 'Yes. We carry clear, daily and colour contact lenses from Alcon, CooperVision, Johnson & Johnson, Bausch + Lomb, Bionics, Manxion and FreshLady, and we guide you through choosing and wearing them.',
     },
     {
       q: 'Why do my eyes feel tired after a day on screens?',

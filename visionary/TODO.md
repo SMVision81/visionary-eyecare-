@@ -83,6 +83,8 @@ Open work against proposal `AUR-PRES-VE-2026-003` plus the admin panel. Details 
 
 ## Accessibility follow-ups
 
+- [ ] WCAG 2.2.2 (Pause, Stop, Hide): the Home brand loop and the Services contact-lens loop run forever with no visible pause button (client choice); they pause only on hover/focus, which touch users can't rely on. Options: a small pause button, or stop after ~3 loops (`animation-iteration-count: 3`) and rest. Confirm with the client.
+
 - [x] FAQ hydration mismatch under reduced motion fixed (FAQ rebuilt as "Ask the optometrist")
 
 - [x] Global focus ring is now `--crimson-dark` (light surfaces); dark sections override to ivory / `--crimson-soft` ones

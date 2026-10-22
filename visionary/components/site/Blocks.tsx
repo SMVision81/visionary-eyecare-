@@ -18,6 +18,7 @@ import {
   brandLink,
   brandMedia,
   brands,
+  contactLensBrands,
   enquiryLink,
   exclusiveBrands,
   exclusiveFrames,
@@ -28,6 +29,7 @@ import {
   mapsLink,
   phone,
   promo,
+  promoLensBrands,
   promotions,
   reviewsLink,
   services,
@@ -365,23 +367,26 @@ export function AboutVisit() {
   );
 }
 
-// Home: a thin, slowly looping line of every brand we carry; area exclusives marked in brass.
-export function BrandStrip() {
+// A thin, slowly looping line of brand names. `marked` names get a brass ✦ (explained in the key). Shared by the Home
+// frame-brand strip (ivory) and the Services contact-lens strip (midnight, scrolling the other way).
+function NameLoop({ label, items, marked, markLabel, markNote, count, className }: { label: string; items: string[]; marked: string[]; markLabel: string; markNote: string; count: string; className?: string }) {
   const names = (copy: boolean) =>
-    brands.map((b) => (
-      <li key={`${copy ? 'b' : 'a'}${b}`} className={exclusiveBrands.includes(b) ? 'is-exclusive' : undefined}>
+    items.map((b) => (
+      <li key={`${copy ? 'b' : 'a'}${b}`} className={marked.includes(b) ? 'is-marked' : undefined}>
         {b}
-        {exclusiveBrands.includes(b) && <span className="sr-only"> (exclusive in the area)</span>}
+        {marked.includes(b) && <span className="sr-only"> ({markNote})</span>}
       </li>
     ));
   return (
     // tabIndex: tapping or tabbing to the strip pauses the loop (no visible pause button, by client choice).
-    <section className="brand-strip" aria-label="Frame and sunglass brands we carry" tabIndex={0}>
+    <section className={['brand-strip', className].filter(Boolean).join(' ')} aria-label={label} tabIndex={0}>
       <p className="brand-strip-key">
-        <span>{brands.length} labels</span>
-        <span>
-          <i aria-hidden="true">✦</i> Exclusive in the area
-        </span>
+        <span>{count}</span>
+        {marked.length > 0 && (
+          <span>
+            <i aria-hidden="true">✦</i> {markLabel}
+          </span>
+        )}
       </p>
       <div className="brand-marquee">
         <ul className="brand-track" role="list">
@@ -392,6 +397,35 @@ export function BrandStrip() {
         </ul>
       </div>
     </section>
+  );
+}
+
+// Home: every frame and sunglass brand we carry; area exclusives marked.
+export function BrandStrip() {
+  return (
+    <NameLoop
+      label="Frame and sunglass brands we carry"
+      items={brands}
+      marked={exclusiveBrands}
+      markLabel="Exclusive in the area"
+      markNote="exclusive in the area"
+      count={`${brands.length} labels`}
+    />
+  );
+}
+
+// Services: the contact lens brands we carry, just before the lens offer; promotion brands marked while it runs.
+export function LensStrip() {
+  return (
+    <NameLoop
+      className="lens-strip"
+      label="Contact lens brands we carry"
+      items={contactLensBrands}
+      marked={promo.active ? promoLensBrands : []}
+      markLabel="Buy 3 Free 1"
+      markNote="in the Buy 3 Free 1 offer"
+      count="Contact lenses"
+    />
   );
 }
 
