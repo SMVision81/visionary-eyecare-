@@ -62,6 +62,10 @@ export const media = {
   brandProjektProdukt: brand('projekt-produkt'),
   brandMovitra: brand('movitra'),
   brandRayBan: brand('ray-ban', 'RAY-BAN eyewear campaign'),
+  // Exclusive frames (product shots supplied by the shop, 22 Oct 2026), shown three per brand on the Services page.
+  frameAkoni1: img('/media/images/frames/akoni-1.jpg', 'Gold and navy navigator frame with grey lenses and side shields'),
+  frameAkoni2: img('/media/images/frames/akoni-2.jpg', 'Round rose-gold frame with green lenses and side shields'),
+  frameAkoni3: img('/media/images/frames/akoni-3.jpg', 'Gunmetal navigator frame with brown gradient lenses'),
   brandArmaniExchange: brand('armani-exchange'), // PLACEHOLDER (drawn frame outline) until a real ARMANI EXCHANGE photo is supplied
   brandTommyHilfiger: brand('tommy-hilfiger', 'TOMMY HILFIGER eyewear campaign'),
   brandOakley: brand('oakley', 'OAKLEY eyewear campaign'),

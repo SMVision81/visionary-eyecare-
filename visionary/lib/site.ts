@@ -107,7 +107,7 @@ export const brandFit: Record<string, { position?: string }> = {
 // lib/media.ts and set `media` here; the optical/sunglasses mix below is ours until the real frames are known.
 export type FrameKind = 'optical' | 'sun';
 export const exclusiveFrames: Record<string, { kind: FrameKind; media?: MediaKey }[]> = {
-  'AKONI': [{ kind: 'optical' }, { kind: 'optical' }, { kind: 'sun' }],
+  'AKONI': [{ kind: 'sun', media: 'frameAkoni1' }, { kind: 'sun', media: 'frameAkoni2' }, { kind: 'sun', media: 'frameAkoni3' }],
   'PROJEKT PRODUKT': [{ kind: 'optical' }, { kind: 'optical' }, { kind: 'sun' }],
   'MOVITRA': [{ kind: 'optical' }, { kind: 'optical' }, { kind: 'sun' }],
 };
