@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { address, bookingLink, enquiryLink, hours, mapsLink, phone } from '@/lib/site';
+import { address, bookingLink, email, enquiryLink, hours, mapsLink, phone } from '@/lib/site';
 import { OpenStatus } from './OpenBadge';
 
 const short = (t: string) => t.replace(' — ', '–');
@@ -69,7 +69,7 @@ export default function Footer() {
           <a href={enquiryLink} target="_blank" rel="noreferrer">
             WhatsApp us<span className="sr-only"> (opens WhatsApp)</span>
           </a>
-          <a href="mailto:hello@visionary-eyecare.my">hello@visionary-eyecare.my</a>
+          <a href={`mailto:${email}`}>{email}</a>
         </div>
       </div>
 

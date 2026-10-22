@@ -29,7 +29,6 @@ import {
   mapsLink,
   phone,
   promo,
-  promoLensBrands,
   promotions,
   reviewsLink,
   services,
@@ -123,7 +122,7 @@ export function AboutHero() {
       </div>
       <div className="ah-specs" aria-hidden="true">
         <div className="ah-lens ah-lens-l">
-          <Media id="aboutInterior" className="ah-img" sizes="(max-width: 760px) 45vw, 380px" />
+          <Media id="aboutFrames" className="ah-img" sizes="(max-width: 760px) 45vw, 380px" />
         </div>
         <div className="ah-lens ah-lens-r">
           <Media id="heroAbout" className="ah-img" sizes="(max-width: 760px) 45vw, 380px" />
@@ -414,19 +413,9 @@ export function BrandStrip() {
   );
 }
 
-// Services: the contact lens brands we carry, just before the lens offer; promotion brands marked while it runs.
+// Services: the contact lens brands we carry, just before the lens offer. No promo marks (client request, 22 Oct 2026).
 export function LensStrip() {
-  return (
-    <NameLoop
-      className="lens-strip"
-      label="Contact lens brands we carry"
-      items={contactLensBrands}
-      marked={promo.active ? promoLensBrands : []}
-      markLabel="Buy 3 Free 1"
-      markNote="in the Buy 3 Free 1 offer"
-      count="Contact lenses"
-    />
-  );
+  return <NameLoop className="lens-strip" label="Contact lens brands we carry" items={contactLensBrands} marked={[]} markLabel="" markNote="" count="Contact lenses" />;
 }
 
 // Home: the four main services set as an optometrist's eye chart. Lines shrink like a Snellen chart, carry the

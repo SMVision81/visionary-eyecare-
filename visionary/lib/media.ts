@@ -66,7 +66,13 @@ export const media = {
   frameAkoni1: img('/media/images/frames/akoni-1.jpg', 'Gold and navy navigator frame with grey lenses and side shields'),
   frameAkoni2: img('/media/images/frames/akoni-2.jpg', 'Round rose-gold frame with green lenses and side shields'),
   frameAkoni3: img('/media/images/frames/akoni-3.jpg', 'Gunmetal navigator frame with brown gradient lenses'),
-  brandArmaniExchange: brand('armani-exchange'), // PLACEHOLDER (drawn frame outline) until a real ARMANI EXCHANGE photo is supplied
+  frameProjekt1: img('/media/images/frames/projekt-produkt-1.jpg', 'Clear champagne square frame with rose-gold temples'),
+  frameProjekt2: img('/media/images/frames/projekt-produkt-2.jpg', 'Black and rose-gold browline frame'),
+  frameProjekt3: img('/media/images/frames/projekt-produkt-3.jpg', 'Gold navigator sunglasses with a brown brow bar and grey-to-amber gradient lenses'),
+  frameMovitra1: img('/media/images/frames/movitra-1.jpg', 'Rose-gold round frame'),
+  frameMovitra2: img('/media/images/frames/movitra-2.jpg', 'Bronze geometric sunglasses with brown gradient lenses'),
+  frameMovitra3: img('/media/images/frames/movitra-3.jpg', 'Gunmetal pilot sunglasses with orange-to-yellow gradient lenses'),
+  brandArmaniExchange: brand('armani-exchange', 'ARMANI EXCHANGE eyewear campaign'),
   brandTommyHilfiger: brand('tommy-hilfiger', 'TOMMY HILFIGER eyewear campaign'),
   brandOakley: brand('oakley', 'OAKLEY eyewear campaign'),
   brandFila: brand('fila', 'FILA eyewear campaign'),
@@ -74,8 +80,8 @@ export const media = {
   brandNewBalance: brand('new-balance', 'NEW BALANCE eyewear campaign'),
   brandPPlusUs: brand('p-plus-us', 'P+US eyewear campaign'),
   brandGuyLaroche: brand('guy-laroche', 'GUY LAROCHE eyewear campaign'),
-  brandCarpeDiem: brand('carpe-diem-v2', 'CARPE DIEM eyewear campaign'),
-  brandHumars: brand('humars', 'HUMARS eyewear campaign'), // PLACEHOLDER (stock frame photo) until the real HUMARS image is supplied
+  brandCarpeDiem: brand('carpe-diem-v3', 'CARPE DIEM eyewear campaign'), // shop-supplied 22 Oct 2026; shows the RM599 tag (client OK'd)
+  brandHumars: brand('humars-v2', 'HUMARS eyewear campaign'), // shop-supplied 22 Oct 2026; shows the RM598 tag (client OK'd)
   brandMasarata: brand('masarata', 'MASARATA eyewear campaign'),
   brandMasunaga: brand('masunaga', 'MASUNAGA eyewear campaign'),
 
@@ -89,19 +95,21 @@ export const media = {
     tall: { src: '/media/images/hero-home-tall.jpg', width: 1536, height: 2752 },
     tallWhen: '(max-width: 760px), (max-width: 1100px) and (orientation: portrait)',
   },
-  // About hero: real photo of the outlet's gold logo wall (client-supplied). Small source (564×604): replace with the
-  // full-size original when available. The AI shop video (media/videos/about-shop.*) is kept but unused.
-  aboutInterior: { type: 'image', src: '/media/images/about-interior.jpg', alt: 'Inside Visionary Eyecare: frame shelves, glass counters and the navy logo wall', width: 567, height: 564 },
-  heroAbout: { type: 'image', src: '/media/images/about-logo-wall.jpg', alt: 'The navy logo wall inside Visionary Eyecare at OUG Parklane, with the gold "We care your eyes" logo above a sofa', width: 564, height: 604 },
-  // Services menu photos, one per service (decorative). STOCK PLACEHOLDERS until matching Gemini/real photos arrive;
-  // contact lenses, fittings and kids are not on-subject yet.
-  svcEyeExam: photo('eye-chart.jpg', ''),
-  svcSpectacles: photo('frame-classic.jpg', ''),
-  svcFrames: photo('frames-rack.jpg', ''),
-  svcContacts: photo('frames-collection.jpg', ''),
-  svcEdging: img('/media/images/svc-lens-edging.jpg'), // PLACEHOLDER (drawn lens outline) until a photo of the lens edger arrives
-  svcFittings: photo('hero-boutique.jpg', ''),
-  svcKids: photo('frames-wall.jpg', ''),
+  // About hero: the outlet's own interior photos, straightened and enhanced by the client (22 Oct 2026). The shop is the
+  // blurred background, the frame wall fills the left lens and a crop of the gold logo wall the right lens. The number
+  // plate seen through the front window is blurred. Originals: collection-assests/Store-Pictures_Videos/enhanced/.
+  aboutInterior: { type: 'image', src: '/media/images/about-shop.jpg', alt: 'Inside Visionary Eyecare: frame shelves, glass counters and the navy logo wall', width: 1086, height: 1448 },
+  aboutFrames: { type: 'image', src: '/media/images/about-frames.jpg', alt: 'The frame wall at Visionary Eyecare: black steel shelves of spectacles and sunglasses above a glass display counter', width: 1086, height: 1448 },
+  heroAbout: { type: 'image', src: '/media/images/about-logo-wall-v2.jpg', alt: 'The navy logo wall inside Visionary Eyecare at OUG Parklane, with the gold "We care your eyes" logo above a sofa', width: 730, height: 660 },
+  // Services menu photos, one per service (decorative). AI-GENERATED STAND-INS (Gemini, 22 Oct 2026; hands only, no
+  // logos), NOT the real outlet: replace with the shop's own photos when available. Originals: archive-unused/ai-originals.
+  svcEyeExam: img('/media/images/services/eye-exam.jpg'),
+  svcSpectacles: img('/media/images/services/spectacles.jpg'),
+  svcFrames: img('/media/images/services/frames.jpg'),
+  svcContacts: img('/media/images/services/contact-lenses.jpg'),
+  svcEdging: img('/media/images/services/lens-edging.jpg'),
+  svcFittings: img('/media/images/services/fittings.jpg'),
+  svcKids: img('/media/images/services/kids.jpg'),
   // Services hero moodboard: the brand folders' SECOND campaign shots (collection-assests/<brand>/*_02 etc.), so none
   // repeat the Collection carousel. Decorative (alt ''): the wall is aria-hidden.
   wallAkoni: { type: 'image', src: '/media/images/wall/akoni.jpg', alt: '', width: 720, height: 405 },
@@ -127,7 +135,8 @@ export const media = {
   // About story: real client photos (cropped from public/media/images/drive-download-…/Entrance Pic 1–2). The storefront
   // crop deliberately stops above the shop's promo banner (its offer is unconfirmed). Small sources (~565px wide).
   aboutStorefront: { type: 'image', src: '/media/images/about-storefront.jpg', alt: 'The Visionary Eyecare shop sign, with its red spectacles logo, above the shop at OUG Parklane', width: 565, height: 152 },
-  aboutEntrance: { type: 'image', src: '/media/images/about-entrance.jpg', alt: 'The glass entrance of Visionary Eyecare, with FILA and AKONI frame displays either side of the door', width: 562, height: 470 },
+  // Shop front, straightened and enhanced by the client (22 Oct 2026); unit D3-0-27 above the door.
+  aboutEntrance: { type: 'image', src: '/media/images/about-entrance-v2.jpg', alt: 'The glass entrance of Visionary Eyecare at unit D3-0-27, with FILA and AKONI frame displays either side of the door', width: 1254, height: 1049 },
   // About "Why people choose us", 3 labels tile: AI-generated (Gemini) still life of three UNBRANDED frames (fake arm
   // lettering painted out). Deliberately not the real brands' products. Original: "public/media/images/3 Label.jpeg".
   // Decorative: the facts are written on top.
@@ -148,7 +157,7 @@ export const media = {
   // heroHome: {
   //   type: 'video',
   //   src: '/media/videos/hero-home.mp4',
-  //   poster: '/images/photos/hero-boutique.jpg',
+  //   poster: '/media/images/your-poster.jpg',
   //   alt: 'Inside the Visionary Eyecare boutique at OUG Parklane',
   // },
 } satisfies Record<string, MediaItem>;

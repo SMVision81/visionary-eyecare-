@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { BrandStrip, Contrast, Explore, FAQ, Hero, JsonLd, ReviewWall, WhatWeDo } from '@/components/site/Blocks';
-import { address, brands, faqs, mapsLink, openingHours, phone, reviewsLink, siteUrl, socialProfiles } from '@/lib/site';
+import { address, brands, email, faqs, mapsLink, openingHours, phone, reviewsLink, siteUrl, socialProfiles } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: { absolute: 'Eye Test & Optical Shop, OUG Parklane KL | Visionary Eyecare' },
@@ -21,6 +21,7 @@ const businessLd = {
   logo: `${siteUrl}/images/logo.png`,
   brand: brands.map((name) => ({ '@type': 'Brand', name })),
   telephone: phone.tel,
+  email,
   hasMap: mapsLink,
   address: { '@type': 'PostalAddress', streetAddress: address.street, postalCode: address.postcode, addressLocality: address.city, addressRegion: address.region, addressCountry: 'MY' },
   geo: { '@type': 'GeoCoordinates', ...address.geo },

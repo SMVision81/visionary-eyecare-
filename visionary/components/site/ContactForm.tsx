@@ -1,7 +1,7 @@
 'use client';
 import { useActionState, type ReactNode } from 'react';
 import { submitEnquiry } from '@/app/(site)/contact/actions';
-import { enquiryLink } from '@/lib/site';
+import { enquiryLink, enquiryRetentionMonths } from '@/lib/site';
 import { enquiryInterests, type ActionState } from '@/lib/types';
 
 const initial: ActionState = { ok: false };
@@ -140,8 +140,8 @@ export default function ContactForm() {
         <div className="form-consent">
           <input id="consent" name="consent" type="checkbox" required aria-invalid={!!err.consent} aria-describedby={describe('consent')} />
           <label htmlFor="consent">
-            I agree to Visionary Eyecare using my name and phone number to reply to this enquiry. We don’t share your details
-            or use them for marketing.
+            I agree to Visionary Eyecare using my name and phone number to reply to this enquiry. Your enquiry is sent to our
+            team by email and deleted after {enquiryRetentionMonths} months. We don’t share your details or use them for marketing.
           </label>
         </div>
         {err.consent && <span id="consent-error" className="field-error">{err.consent}</span>}

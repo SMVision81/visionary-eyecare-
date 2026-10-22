@@ -1,5 +1,6 @@
 import { requireAdmin } from '@/lib/auth';
 import { enquiries, isDemoData, reviews } from '@/lib/data';
+import { purgeExpiredEnquiries } from '@/lib/retention';
 import Sidebar from '@/components/admin/Sidebar';
 import TopBar from '@/components/admin/TopBar';
 
@@ -7,6 +8,7 @@ import TopBar from '@/components/admin/TopBar';
 // so every page below ALSO calls requireAdmin() (and every Server Action does too).
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   const session = await requireAdmin();
+  await purgeExpiredEnquiries(); // before counting, so the nav never counts expired enquiries
   const [e, r] = await Promise.all([enquiries.counts(), reviews.counts()]);
   return (
     <div className="shell">

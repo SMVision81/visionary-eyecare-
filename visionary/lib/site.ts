@@ -2,6 +2,12 @@ import type { MediaKey } from './media';
 
 export const phone = { display: '012-948 9141', tel: '+60129489141', wa: '60129489141' };
 
+// Business email (client, 22 Oct 2026): shown on the site and the default inbox for enquiry emails.
+export const email = 'smvisionn81@gmail.com';
+
+// Enquiries (and their reply history) are deleted automatically after this many months (owner, 22 Oct 2026; PDPA).
+export const enquiryRetentionMonths = 2;
+
 export const whatsappLink = (text?: string) =>
   `https://wa.me/${phone.wa}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
 
@@ -103,13 +109,12 @@ export const brandFit: Record<string, { position?: string }> = {
 };
 
 // The three exclusives show three frames each: optical frames and sunglasses (client request, 22 Oct 2026).
-// PLACEHOLDER: no product photos yet, so each tile draws a frame outline. When the shop's photos arrive, add them to
-// lib/media.ts and set `media` here; the optical/sunglasses mix below is ours until the real frames are known.
+// Shop-supplied product shots (22 Oct 2026). A tile without `media` falls back to a drawn frame outline (FrameSketch).
 export type FrameKind = 'optical' | 'sun';
 export const exclusiveFrames: Record<string, { kind: FrameKind; media?: MediaKey }[]> = {
   'AKONI': [{ kind: 'sun', media: 'frameAkoni1' }, { kind: 'sun', media: 'frameAkoni2' }, { kind: 'sun', media: 'frameAkoni3' }],
-  'PROJEKT PRODUKT': [{ kind: 'optical' }, { kind: 'optical' }, { kind: 'sun' }],
-  'MOVITRA': [{ kind: 'optical' }, { kind: 'optical' }, { kind: 'sun' }],
+  'PROJEKT PRODUKT': [{ kind: 'optical', media: 'frameProjekt1' }, { kind: 'optical', media: 'frameProjekt2' }, { kind: 'sun', media: 'frameProjekt3' }],
+  'MOVITRA': [{ kind: 'optical', media: 'frameMovitra1' }, { kind: 'sun', media: 'frameMovitra2' }, { kind: 'sun', media: 'frameMovitra3' }],
 };
 
 export const brandLink = (name: string) => whatsappLink(`Hi Visionary Eyecare, I'd like to see ${name} frames.`);

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { requireAdmin } from '@/lib/auth';
+import { enquiryRetentionMonths } from '@/lib/site';
 import { enquiries } from '@/lib/data';
 import { formatMyPhone } from '@/lib/phone';
 import { timeAgo } from '@/lib/format';
@@ -23,7 +24,7 @@ export default async function EnquiriesPage({ searchParams }: { searchParams: Pr
 
   return (
     <main className="admin-page">
-      <PageHeader title="Enquiries" subtitle="Messages customers sent through the website. Reply on WhatsApp from each enquiry." />
+      <PageHeader title="Enquiries" subtitle={`Messages customers sent through the website. Reply on WhatsApp from each enquiry. Enquiries are deleted automatically after ${enquiryRetentionMonths} months.`} />
 
       <div className="toolbar">
         <StatusTabs basePath="/admin/enquiries" tabs={enquiryTabs} current={status} labels={enquiryStatusLabel} counts={counts} q={q} />

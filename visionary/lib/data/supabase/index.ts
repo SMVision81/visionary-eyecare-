@@ -209,6 +209,11 @@ const enquiries: EnquiriesRepo = {
   async setStatus(id, status) {
     check(await db().from('enquiries').update({ status }).eq('id', id), 'set enquiry status');
   },
+  async purgeOlderThan(cutoff) {
+    // enquiry_replies rows go with them (ON DELETE CASCADE).
+    const res = await db().from('enquiries').delete().lt('created_at', cutoff.toISOString()).select('id');
+    return (check(res, 'purge enquiries') as { id: string }[]).length;
+  },
 };
 
 const stats: StatsRepo = {

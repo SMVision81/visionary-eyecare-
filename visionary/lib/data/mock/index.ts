@@ -140,6 +140,11 @@ const enquiries: EnquiriesRepo = {
     if (!e) throw new Error('Enquiry not found');
     e.status = status;
   },
+  async purgeOlderThan(cutoff) {
+    const before = store.enquiries.length;
+    store.enquiries = store.enquiries.filter((e) => new Date(e.createdAt) >= cutoff);
+    return before - store.enquiries.length;
+  },
 };
 
 const stats: StatsRepo = {

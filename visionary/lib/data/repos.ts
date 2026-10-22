@@ -54,6 +54,8 @@ export interface EnquiriesRepo {
   /** Owner confirmed the latest reply was sent: -> replied. */
   confirmReplied(id: string): Promise<void>;
   setStatus(id: string, status: EnquiryStatus): Promise<void>;
+  /** Delete enquiries (and their replies) created before `cutoff`. Returns how many were deleted. */
+  purgeOlderThan(cutoff: Date): Promise<number>;
 }
 
 export interface StatsRepo {
