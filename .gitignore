@@ -9,6 +9,9 @@ out/
 
 # Internal proposal document — kept local only
 *AUR-PRES-VE-2026*.pdf
+# Invoices and quotes (confidential, kept local only)
+Invoice*.pdf
+Quote*.pdf
 
 # OS cruft
 .DS_Store
