@@ -727,7 +727,7 @@ function GoogleSummary({ google }: { google: Awaited<ReturnType<typeof statsRepo
 // Rating + count always come from Google (rating is hidden until the real value is available).
 // Home: a fanned deck of review cards (ReviewDeck) beside the heading and a slowly rotating "Reviews on Google" seal.
 export async function ReviewWall() {
-  const [items, google] = await Promise.all([reviewsRepo.listPublic(8), statsRepo.get()]);
+  const [items, google] = await Promise.all([reviewsRepo.listPublic(25), statsRepo.get()]);
   const count = google.totalReviews?.toLocaleString('en-MY') ?? google.totalLabel;
   return (
     <section className="reviews dk section" id="reviews" aria-labelledby="reviews-title">
@@ -779,7 +779,7 @@ export async function ReviewWall() {
 // About: guest reviews, one at a time, coming into focus (ReviewFocus). Starts at the 4th live review so the opening
 // quote differs from the Services and Contact review quotes. Rating + count always come from Google.
 export async function AboutReviews() {
-  const [items, google] = await Promise.all([reviewsRepo.listPublic(25), statsRepo.get()]);
+  const [items, google] = await Promise.all([reviewsRepo.listPublic(50), statsRepo.get()]);
   const ordered = items.length > 3 ? [...items.slice(3), ...items.slice(0, 3)] : items;
   return (
     <section className="ab-voices" aria-labelledby="ab-voices-title">
@@ -808,7 +808,7 @@ export async function AboutReviews() {
 // Services: a compact navy band of Google reviews: the count in the heading, three short quotes side by side (count and
 // rating always come from Google; the rating shows only once it is real). Different from Home (deck) and About (slider).
 export async function ServicesReviews() {
-  const [items, google] = await Promise.all([reviewsRepo.listPublic(25), statsRepo.get()]);
+  const [items, google] = await Promise.all([reviewsRepo.listPublic(50), statsRepo.get()]);
   const count = google.totalReviews?.toLocaleString('en-MY') ?? google.totalLabel;
   // Reviews 2, 3 and 5: the About slider opens on the 4th, so the first quotes seen on each page differ.
   const picks = items.length ? [1, 2, 4].map((i) => items[i % items.length]).filter((r, i, a) => a.indexOf(r) === i) : [];
@@ -938,7 +938,7 @@ export function ContactHero() {
 
 // Contact: the real shop (interior + eye-test room) beside one Google review, so reviews show on this page too.
 export async function ContactVisit() {
-  const [items, google] = await Promise.all([reviewsRepo.listPublic(25), statsRepo.get()]);
+  const [items, google] = await Promise.all([reviewsRepo.listPublic(50), statsRepo.get()]);
   const r = items.length ? items[2 % items.length] : null;
   const count = google.totalReviews?.toLocaleString('en-MY') ?? google.totalLabel;
   return (
