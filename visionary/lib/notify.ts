@@ -1,7 +1,7 @@
 import 'server-only';
 import { createTransport } from 'nodemailer';
 import { customerWhatsAppLink, formatMyPhone } from './phone';
-import { email as businessEmail, siteUrl } from './site';
+import { email as businessEmail, emailEnquiries, siteUrl } from './site';
 import type { Enquiry } from './types';
 
 // Enquiry email sent from the business Gmail account to itself (Gmail SMTP). Configure in .env.local / Netlify:
@@ -33,6 +33,7 @@ function body(e: Enquiry) {
  * Failures are logged as EMAIL_DELIVERY_FAILED with the SMTP error code only (no personal data).
  */
 export async function notifyNewEnquiry(enquiry: Enquiry): Promise<void> {
+  if (!emailEnquiries) return; // switched off by the client: enquiries are read in the admin inbox
   const pass = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '');
   const user = process.env.GMAIL_USER || businessEmail;
   if (!pass) {

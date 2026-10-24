@@ -5,6 +5,10 @@ export const phone = { display: '012-948 9141', tel: '+60129489141', wa: '601294
 // Business email (client, 22 Oct 2026): shown on the site and the default inbox for enquiry emails.
 export const email = 'smvisionn81@gmail.com';
 
+// Email a copy of each new enquiry to the business (lib/notify.ts, Gmail). OFF by client choice (24 Oct 2026): enquiries
+// are read in the admin inbox. To turn on: set true AND set GMAIL_APP_PASSWORD. The form's consent text follows this flag.
+export const emailEnquiries = false;
+
 // Enquiries (and their reply history) are deleted automatically after this many months (owner, 22 Oct 2026; PDPA).
 export const enquiryRetentionMonths = 2;
 

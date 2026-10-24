@@ -59,7 +59,7 @@ Open work against proposal `AUR-PRES-VE-2026-003` plus the admin panel. Details 
 - [x] Reviews reviewed 21 Oct 2026 (security, database, React, a11y, TypeScript): all confirmed findings fixed (HttpOnly/Secure auth cookies, batched import under the 1 MB action limit, code-point truncation, hardened Takeout parsing, stable pagination, DB range checks + updated_at trigger, audit email on imports/replies, accessible review form/import status)
 - [x] Google rating + count shown from the profile snapshot (`googleProfile`: 5.0 · 2,509, 21 Oct 2026). Update on every import until the sync writes them
 - [x] (publishing/importing reviews now calls `revalidatePath('/(site)', 'layout')`) Home is statically prerendered, so the hero/review counts freeze at build time: add `revalidate` on Home or call `revalidatePath('/')` from the sync job
-- [x] `lib/notify.ts` sends enquiry emails via Gmail SMTP (plain text, timeouts, never fails the form, logs no personal data). [ ] Owner: turn on 2-Step Verification for smvisionn81@gmail.com and create an app password (myaccount.google.com/apppasswords); set it as `GMAIL_APP_PASSWORD` on Netlify and in `.env.local`, then send a test enquiry
+- [x] Enquiry email: built (Gmail SMTP, `lib/notify.ts`) but OFF by client choice (24 Oct 2026): `emailEnquiries = false` in `lib/site.ts`. No `GMAIL_APP_PASSWORD` needed. To turn on later: set the flag to true and add the app password
 - [ ] Rate limits are in-memory per server instance (now using Netlify's client-IP header and pruned). For durable limits, count recent rows per hashed IP in Supabase. Website reviews are already capped at 2 pending per phone in the database
 - [ ] Remove demo seed + demo banner; never ship `DATA_SOURCE=mock`
 
