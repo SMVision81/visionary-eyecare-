@@ -1271,6 +1271,15 @@ main > section:last-child { padding-bottom: max(calc(var(--cta-lift, 52px) + 40p
    as on a real chart. Focus-in: CSS scroll-driven blur → sharp (progressive enhancement; exception to the
    transform/opacity rule, once per line, never under reduced motion; unsupported browsers show it sharp). */
 .chart { background: var(--ivory); padding-block: clamp(48px, 5vw, 72px); }
+/* Home: KPSB Care panel note. A slim paper band with a brass hairline, between the eye chart and the Explore panels. */
+.panel-note { background: var(--ivory); padding: 0 var(--pad) clamp(40px, 5vw, 64px); }
+.panel-note-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px clamp(24px, 4vw, 56px); padding: clamp(20px, 2.6vw, 30px) clamp(20px, 3vw, 40px); background: var(--paper); border: 1px solid var(--brass-line); border-radius: 4px; }
+.panel-note h2 { margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.1; }
+.panel-note p { margin: 8px 0 0; max-width: 620px; font-size: 15px; line-height: 1.6; color: var(--stone); text-wrap: pretty; }
+@media (max-width: 860px) {
+  .panel-note-inner { grid-template-columns: 1fr; }
+  .panel-note .btn { justify-self: start; }
+}
 .chart-head { max-width: 1240px; margin: 0 auto clamp(16px, 2vw, 28px); display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 40px; }
 .chart-head h2 { font-size: clamp(28px, 2.6vw, 40px); }
 .chart-lines { max-width: 1240px; margin: 0 auto; padding: 0; list-style: none; }

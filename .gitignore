@@ -12,6 +12,7 @@ out/
 # Invoices and quotes (confidential, kept local only)
 Invoice*.pdf
 Quote*.pdf
+*Handover Report*.pdf
 
 # OS cruft
 .DS_Store

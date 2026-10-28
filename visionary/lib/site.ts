@@ -17,6 +17,11 @@ export const whatsappLink = (text?: string) =>
 
 export const enquiryLink = whatsappLink("Hi Visionary Eyecare, I'd like to make an enquiry.");
 export const bookingLink = whatsappLink("Hi Visionary Eyecare, I'd like to book an eye test.");
+
+// Panel optician for KPSB Care (client, 28 Oct 2026): members get glasses and Visionary claims from KPSB. Coverage
+// depends on each member's plan, so the site never promises "free": it invites them to check.
+export const panel = { name: 'KPSB Care' };
+export const panelLink = whatsappLink(`Hi Visionary Eyecare, I have a ${panel.name} card. Can I use it for my glasses?`);
 // Confirmed from the Google Business Profile (manager view, 21 Oct 2026).
 export const address = {
   street: 'D3-0-27, OUG Parklane, Jalan 1/152',

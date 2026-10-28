@@ -27,6 +27,8 @@ import {
   hours,
   mapsEmbed,
   mapsLink,
+  panel,
+  panelLink,
   phone,
   promo,
   promotions,
@@ -458,6 +460,29 @@ export function WhatWeDo() {
         <Link className="btn-text" href="/services">
           See all services <span aria-hidden="true">→</span>
         </Link>
+      </div>
+    </section>
+  );
+}
+
+// Home: a slim note that Visionary is a panel optician for KPSB Care (members check coverage on WhatsApp).
+export function PanelNote() {
+  return (
+    <section className="panel-note" aria-labelledby="panel-title">
+      <div className="panel-note-inner">
+        <Label>Panel optician</Label>
+        <div className="panel-note-copy">
+          <h2 id="panel-title">
+            {panel.name} members, <em>welcome.</em>
+          </h2>
+          <p>
+            We are a panel optician for {panel.name}. Bring your {panel.name} card when you visit: we check your coverage and
+            handle the claim with them for you.
+          </p>
+        </div>
+        <a className="btn btn-navy" href={panelLink} target="_blank" rel="noreferrer">
+          Check my coverage<span className="sr-only"> (opens WhatsApp)</span>
+        </a>
       </div>
     </section>
   );
