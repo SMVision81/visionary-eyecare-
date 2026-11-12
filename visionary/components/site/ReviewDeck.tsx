@@ -9,6 +9,12 @@ const tones = ['paper', 'navy', 'ivory'] as const;
 
 const VISIBLE = 3; // cards drawn in the stack; the rest wait invisibly behind the last one
 // Back cards fan out evenly to both sides (one tilted left, one right), dropping slightly lower each layer.
+// Longer reviews get smaller type so every card fits the fixed-height deck.
+const sizeClass = (text: string) => {
+  const len = Array.from(text).length;
+  return len > 420 ? ' deck-l deck-xl' : len > 220 ? ' deck-l' : len > 120 ? ' deck-m' : '';
+};
+
 const stackPos = (depth: number) => {
   const d = Math.min(depth, VISIBLE - 1);
   const side = d === 0 ? 0 : d % 2 ? 1 : -1;
@@ -74,7 +80,7 @@ export default function ReviewDeck({ items }: { items: PublicReview[] }) {
           return (
             <motion.figure
               key={r.id}
-              className={`deck-card deck-${tones[k % tones.length]}`}
+              className={`deck-card deck-${tones[k % tones.length]}${sizeClass(r.text)}`}
               style={{ zIndex: isFlying ? n + 1 : n - depth }}
               initial={false}
               animate={isFlying ? { x: `${flying.dir * 112}%`, y: -10, rotate: flying.dir * 9, scale: 1, opacity: 1 } : stackPos(depth)}
