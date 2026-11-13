@@ -22,6 +22,52 @@ export const bookingLink = whatsappLink("Hi Visionary Eyecare, I'd like to book 
 // depends on each member's plan, so the site never promises "free": it invites them to check.
 export const panel = { name: 'KPSB Care' };
 export const panelLink = whatsappLink(`Hi Visionary Eyecare, I have a ${panel.name} card. Can I use it for my glasses?`);
+
+// 0% instalment payment plan (Pine Labs), from the shop's counter leaflet and the owner, 13 Nov 2026: purchases of RM600
+// and above, up to 60 months, subject to the issuing bank's approval. Credit cards from Hong Leong Bank, Maybank and
+// Public Bank are NOT eligible (owner). Names only until official logo files are supplied; never use the Pine Labs name.
+export const payment = {
+  minimum: 'RM600',
+  months: 60,
+  processing: '3–5 business days',
+  banks: ['AEON Credit Service', 'Affin Bank', 'Alliance Bank', 'AmBank', 'Bank Islam', 'BSN', 'HSBC', 'OCBC', 'RHB', 'Standard Chartered', 'UOB'],
+  bnpl: ['atome', 'Moby', 'Moby Islamic', 'PayLater by Grab', 'RHB PayLater', 'SPayLater'],
+  ewallets: ['Alipay+', 'Boost', 'Fave Pay', 'GrabPay', 'MAE', 'Touch ’n Go eWallet', 'MCash', 'Setel', 'ShopeePay', 'UnionPay', 'WeChat Pay'],
+  notEligibleCards: ['Hong Leong Bank', 'Maybank', 'Public Bank'],
+};
+// Logos keyed by the exact name in `payment` above. Add a file to public/media/images/payments/, a `payLogo*` entry to
+// lib/media.ts and map it here. Every tile has a logo.
+export const paymentLogos: Record<string, MediaKey> = {
+  'GrabPay': 'payLogoGrabpay',
+  'Bank Islam': 'payLogoBankIslam',
+  'Moby Islamic': 'payLogoMobyIslamic',
+  'PayLater by Grab': 'payLogoGrabPaylater',
+  'RHB PayLater': 'payLogoRhbPaylater',
+  'SPayLater': 'payLogoSpaylater',
+  'Boost': 'payLogoBoost',
+  'AEON Credit Service': 'payLogoAeonCreditService',
+  'Affin Bank': 'payLogoAffinBank',
+  'Alliance Bank': 'payLogoAllianceBank',
+  'AmBank': 'payLogoAmbank',
+  'BSN': 'payLogoBsn',
+  'HSBC': 'payLogoHsbc',
+  'OCBC': 'payLogoOcbc',
+  'RHB': 'payLogoRhb',
+  'Standard Chartered': 'payLogoStandardChartered',
+  'UOB': 'payLogoUob',
+  'atome': 'payLogoAtome',
+  'Moby': 'payLogoMoby',
+  'Alipay+': 'payLogoAlipayPlus',
+  'Fave Pay': 'payLogoFave',
+  'MAE': 'payLogoMae',
+  'Touch ’n Go eWallet': 'payLogoTouchNGo',
+  'MCash': 'payLogoMcash',
+  'Setel': 'payLogoSetel',
+  'ShopeePay': 'payLogoShopeepay',
+  'UnionPay': 'payLogoUnionpay',
+  'WeChat Pay': 'payLogoWechatPay',
+};
+export const paymentLink = whatsappLink("Hi Visionary Eyecare, I'd like to pay by instalment. Can I use my card or provider?");
 // Confirmed from the Google Business Profile (manager view, 21 Oct 2026).
 export const address = {
   street: 'D3-0-27, OUG Parklane, Jalan 1/152',
@@ -209,7 +255,7 @@ export const promotions: { brand: string; tagline: string; detail: string; stat:
 
 export type Faq = { q: string; a: string };
 
-export const faqs: Record<'home' | 'about' | 'services' | 'contact', Faq[]> = {
+export const faqs: Record<'home' | 'about' | 'services' | 'contact' | 'payment', Faq[]> = {
   home: [
     {
       q: 'I haven’t had an eye test in years. Where do I start?',
@@ -278,6 +324,20 @@ export const faqs: Record<'home' | 'about' | 'services' | 'contact', Faq[]> = {
     {
       q: 'Do you offer eyecare for children?',
       a: 'Yes. Our team offers gentle, unhurried support for younger eyes. WhatsApp us to arrange a visit.',
+    },
+  ],
+  payment: [
+    {
+      q: 'Can I pay for my glasses in instalments?',
+      a: `Yes. On purchases of ${payment.minimum} and above, you can split the cost into 0% instalments over up to ${payment.months} months with a credit card from a participating bank, or with a buy-now-pay-later provider. Approval and terms come from your bank or provider.`,
+    },
+    {
+      q: 'Which cards and providers can I use?',
+      a: `Credit cards from ${payment.banks.join(', ')}; buy-now-pay-later with ${payment.bnpl.join(', ')}; and e-wallets including ${payment.ewallets.join(', ')}. Credit cards from ${payment.notEligibleCards.join(', ')} are not eligible for the instalment plan.`,
+    },
+    {
+      q: 'How long does an instalment plan take to set up?',
+      a: `Once your plan is approved, it may take about ${payment.processing} to process. Availability varies by bank and provider, so message us if you are unsure.`,
     },
   ],
   contact: [

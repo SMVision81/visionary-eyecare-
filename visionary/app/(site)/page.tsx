@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { BrandStrip, Contrast, Explore, FAQ, Hero, JsonLd, PanelNote, ReviewWall, WhatWeDo } from '@/components/site/Blocks';
+import { BrandStrip, Contrast, Explore, FAQ, Hero, JsonLd, PanelNote, PaySection, ReviewWall, WhatWeDo } from '@/components/site/Blocks';
 import { address, brands, email, faqs, mapsLink, openingHours, phone, reviewsLink, siteUrl, socialProfiles } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -39,6 +39,7 @@ export default function Home() {
       <Contrast />
       <WhatWeDo />
       <PanelNote />
+      <PaySection />
       <Explore />
       <ReviewWall />
       <FAQ

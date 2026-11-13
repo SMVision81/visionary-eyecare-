@@ -7,6 +7,7 @@
 - 16 frame and sunglass brands: AKONI, PROJEKT PRODUKT, MOVITRA, RAY-BAN, ARMANI EXCHANGE, TOMMY HILFIGER, OAKLEY, FILA, AGNÈS B., NEW BALANCE, P+US, GUY LAROCHE, CARPE DIEM, HUMARS, MASARATA, MASUNAGA.
 - Exclusive in the area: AKONI, PROJEKT PRODUKT and MOVITRA.
 - Premium and affordable: alongside the premium labels, a wide range of affordable frames, some under RM100.
+- Payment: 0% instalment plans of up to 60 months on purchases of RM600 and above, with credit cards from participating banks (not Hong Leong Bank, Maybank or Public Bank cards), buy-now-pay-later providers and e-wallets; subject to bank approval.
 - Panel optician for KPSB Care: members can use their KPSB Care card; coverage depends on their plan, and Visionary claims with KPSB.
 - Contact lenses: Alcon, CooperVision, Johnson & Johnson, Bausch + Lomb, Bionics, Manxion and FreshLady (Buy 3 Free 1 on selected Bionics Color Touch, Manxion and FreshLady).
 - Opening hours: Monday to Saturday 10:00am to 8:30pm; Sunday 10:30am to 6:00pm.
@@ -22,4 +23,5 @@
 - [Home](/): overview, services, brands, Google reviews and FAQs.
 - [About](/about): who we are, the in-house optometrist and optician, what a visit looks like.
 - [Services & Collections](/services): every service, the 16 labels, affordable frames and the current contact lens offer.
+- [Payment options](/payment-options): 0% instalment plans, accepted banks, buy-now-pay-later providers and e-wallets.
 - [Contact](/contact): map, opening hours, WhatsApp, phone and the enquiry form.

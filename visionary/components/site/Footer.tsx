@@ -41,6 +41,7 @@ export default function Footer() {
           <h3>Pages</h3>
           <Link href="/about">About us</Link>
           <Link href="/services">Services &amp; Collections</Link>
+          <Link href="/payment-options">Payment options</Link>
           <Link href="/contact">Contact</Link>
         </nav>
         <div className="footer-col">

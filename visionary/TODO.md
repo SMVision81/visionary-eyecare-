@@ -14,6 +14,9 @@ Open work against proposal `AUR-PRES-VE-2026-003` plus the admin panel. Details 
 
 ## Client content to confirm (placeholders in use)
 
+- [ ] Payment options (13–14 Nov 2026): All 28 tiles have logos (from the brands' own sites, Wikimedia Commons and files the client supplied).  Ideally replace all with the official logo pack from the payment processor; confirm "Touch ’n Go eWallet" (blue card in the e-wallet row) and that MAE is accepted
+- [ ] Payment options page is new scope: add to the admin change order
+
 - [x] Brand photos (22 Oct 2026): ARMANI EXCHANGE, HUMARS and CARPE DIEM supplied. The HUMARS and CARPE DIEM photos show price stickers (RM598.00 / RM599.00); the client chose to keep them visible. If prices change, ask for clean photos
 
 - [x] Business email: smvisionn81@gmail.com (`email` in `lib/site.ts`; footer, JSON-LD, llms.txt)

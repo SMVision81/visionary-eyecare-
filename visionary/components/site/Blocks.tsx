@@ -29,6 +29,9 @@ import {
   mapsLink,
   panel,
   panelLink,
+  payment,
+  paymentLink,
+  paymentLogos,
   phone,
   promo,
   promotions,
@@ -485,6 +488,111 @@ export function PanelNote() {
         </a>
       </div>
     </section>
+  );
+}
+
+// Logo wall for the payment options: one row per group, a white tile per bank / provider / wallet. Tiles show the official
+// logo when one is mapped in `paymentLogos` (lib/site.ts), otherwise the name. Used on Home and on /payment-options.
+function PayWall({ heading: H = 'h3' }: { heading?: 'h2' | 'h3' }) {
+  const groups = [
+    { title: 'Credit cards', note: 'Participating banks', items: payment.banks },
+    { title: 'Buy now, pay later', note: 'Providers', items: payment.bnpl },
+    { title: 'E-wallets', note: 'Accepted at the counter', items: payment.ewallets },
+  ];
+  return (
+    <div className="pay-wall">
+      {groups.map((g) => (
+        <div className="pay-row" key={g.title}>
+          <div className="pay-row-head">
+            <H>{g.title}</H>
+            <p>{g.note}</p>
+          </div>
+          <ul className="pay-tiles" role="list">
+            {g.items.map((n) => (
+              <li className="pay-tile" key={n}>
+                {paymentLogos[n] ? <Media id={paymentLogos[n]} sizes="140px" /> : n}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Home: navy section after the KPSB note: the 0% instalment offer and every accepted bank, provider and wallet.
+export function PaySection() {
+  return (
+    <section className="pay" aria-labelledby="pay-title">
+      <div className="pay-inner">
+        <div className="pay-head">
+          <div>
+            <Label light>Payment options</Label>
+            <h2 id="pay-title">
+              0% instalments, <em>up to {payment.months} months.</em>
+            </h2>
+            <p>
+              On purchases of {payment.minimum} and above, pay with a credit card from a participating bank or a buy-now-pay-later
+              provider. E-wallets are welcome too.
+            </p>
+          </div>
+          <Link className="btn btn-crimson" href="/payment-options">
+            See payment options
+          </Link>
+        </div>
+        <PayWall />
+        <p className="pay-fine">
+          Credit cards from {listJoin(payment.notEligibleCards)} are not eligible. Plans are subject to your bank or provider’s approval.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+// /payment-options: the full list of banks, buy-now-pay-later providers and e-wallets, plus the rules.
+export function PaymentOptions() {
+  return (
+    <>
+      <section className="po-hero">
+        <Label>Payment options</Label>
+        <h1>
+          Spread the cost, <em>0% instalments.</em>
+        </h1>
+        <p className="po-lead">
+          On purchases of {payment.minimum} and above, pay for your glasses in 0% instalments over up to {payment.months} months with a
+          credit card from a participating bank or a buy-now-pay-later provider.
+        </p>
+        <a className="btn btn-crimson" href={paymentLink} target="_blank" rel="noreferrer">
+          Ask us about instalments<span className="sr-only"> (opens WhatsApp)</span>
+        </a>
+        <dl className="po-facts">
+          <div>
+            <dt>{payment.minimum}+</dt>
+            <dd>Minimum purchase</dd>
+          </div>
+          <div>
+            <dt>{payment.months} months</dt>
+            <dd>Longest instalment plan</dd>
+          </div>
+          <div>
+            <dt>0%</dt>
+            <dd>Instalment plan</dd>
+          </div>
+        </dl>
+      </section>
+      <section className="po-groups" aria-label="Accepted cards, providers and e-wallets">
+        <PayWall heading="h2" />
+      </section>
+      <section className="po-fine" aria-label="Good to know">
+        <p>
+          <strong>Not eligible:</strong> credit cards from {listJoin(payment.notEligibleCards)} cannot be used for the instalment plan.
+        </p>
+        <p>
+          Instalment plans are subject to your bank or provider’s approval and terms. Once approved, a plan may take about{' '}
+          {payment.processing} to process. Availability varies by bank and provider.
+        </p>
+      </section>
+    </>
   );
 }
 
